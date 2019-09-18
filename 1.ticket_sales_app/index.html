@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <script src="app.js"></script>
+    <script>
+        window.log = msg => console.log(msg)  
+
+        const invitation = new Invitation(new Date('2019-09-18'))
+        const bag = new Bag(invitation, 10000)
+        const audience = new Audience(bag)
+
+        const bag2 = new Bag(null, 10000)
+        const audience2 = new Audience(bag2)
+
+        const tickets = []
+        for (let i = 0; i < 10; i++) {
+          tickets.push(new Ticket(1000))
+        }
+        const ticketOffice = new TicketOffice(1000, tickets)
+        const ticketSeller = new TicketSeller(ticketOffice)
+        const theater = new Theater(ticketSeller)
+
+        theater.enter(audience)
+        theater.enter(audience2)
+    </script>
+  </body>
+</html>
